@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && docker-php-ext-install pdo_pgsql zip
 
-# 2. Apache sozlamasi (Saytni /public papkasiga yo'naltirish)
+# 2. Apache sozlamasi
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN a2enmod rewrite
@@ -26,4 +26,8 @@ RUN composer install --no-dev --optimize-autoloader
 # 6. Ruxsatlarni to'g'irlash
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-EXPOSE 80
+# 7. Entrypoint skriptini sozlash (YANGI QOSHIILGAN QISM)
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["docker-entrypoint.sh"]

@@ -64,3 +64,81 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Ishonch Portali
+
+Ushbu loyiha aholi murojaatlari bilan ishlash, ularni tasniflash va ijrosini nazorat qilish uchun mo'ljallangan avtomatlashtirilgan axborot tizimi.
+
+🚀 Loyiha imkoniyatlari
+
+Foydalanuvchilar: Tizimga kirish, murojaat yo'llash va holatini kuzatish.
+
+Admin paneli: Murojaatlarni ko'rish, tahrirlash, javob berish va statistikalarni kuzatish.
+
+Kategoriyalar: Murojaatlarni turlarga ajratish (masalan: kommunal, ijtimoiy va h.k).
+
+Arxiv: Yakunlangan murojaatlar bazasi.
+
+Chop etish: Murojaat va uning javobini PDF yoki bosma shaklda chiqarish.
+
+🛠 Texnologiyalar
+
+Loyiha quyidagi texnologiyalar asosida qurilgan:
+
+PHP: ^8.1
+
+Laravel: ^10.x
+
+Ma'lumotlar bazasi: MySQL
+
+Frontend: Blade Templates, Bootstrap/Tailwind, JavaScript
+
+⚙️ O'rnatish qo'llanmasi (Mahalliy kompyuterda)
+
+Loyihani o'z kompyuteringizga o'rnatish uchun quyidagi qadamlarni bajaring:
+
+Repozitoriyni yuklab olish:
+
+git clone [https://github.com/sirojiddin-hub/ishonch-portali.git](https://github.com/sirojiddin-hub/ishonch-portali.git)
+cd ishonch-portali
+
+
+Kutubxonalarni o'rnatish:
+
+composer install
+npm install && npm run build
+
+
+Atrof-muhit sozlamalari (.env):
+.env.example faylidan nusxa oling:
+
+cp .env.example .env
+
+
+So'ngra .env faylini ochib, ma'lumotlar bazasi sozlamalarini kiriting (DB_DATABASE, DB_USERNAME, DB_PASSWORD).
+
+Kalitni generatsiya qilish:
+
+php artisan key:generate
+
+
+Migratsiya va Siderlar:
+Ma'lumotlar bazasini jadvallar bilan to'ldirish:
+
+php artisan migrate --seed
+
+
+Loyihani ishga tushirish:
+
+php artisan serve
+
+
+Brauzerda: http://localhost:8000
+
+🔒 Xavfsizlik
+
+Agar loyihada xavfsizlik bilan bog'liq muammo topsangiz, iltimos, "Issue" ochish o'rniga to'g'ridan-to'g'ri bog'laning.
+
+📄 Litsenziya
+
+Ushbu loyiha ochiq kodli dasturiy ta'minot hisoblanadi.
