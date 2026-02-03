@@ -1,6 +1,6 @@
 FROM php:8.2-apache
 
-# 1. Barcha kerakli kutubxonalarni o'rnatish (kuchaytirilgan)
+# 1. Kerakli kutubxonalarni o'rnatish
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -27,9 +27,8 @@ RUN composer install --no-dev --optimize-autoloader
 # 6. Ruxsatlarni to'g'irlash
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-# 7. Portni ochish
+# 7. Portni ochish (Render kutayotgan eshik)
 EXPOSE 80
 
-# 8. ISHGA TUSHIRISH (Xavfsiz rejim)
-# "|| true" degani - agar migratsiya xato bersa ham, to'xtama va saytni yoq!
-CMD bash -c "php artisan migrate --force || echo 'DIQQAT: Migratsiyada xatolik, lekin sayt ishga tushirilmoqda...'; apache2-foreground"
+# 8. ISHGA TUSHIRISH (Eng oddiy variant: Faqat serverni yoqish)
+CMD ["apache2-foreground"]
