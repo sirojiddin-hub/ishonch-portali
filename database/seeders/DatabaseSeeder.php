@@ -8,19 +8,15 @@ use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // Agar bu email bilan foydalanuvchi bo'lmasa, yangi admin yaratamiz
-        User::updateOrCreate(
-            ['email' => 'admin@gmail.com'], // LOGIN SHU BO'LADI
-            [
-                'name' => 'Adminstrator',
-                'password' => Hash::make('admin123'), // PAROL SHU BO'LADI
-                'role' => 'admin', // Agar loyihangizda role ustuni bo'lsa
-            ]
-        );
+        // Eski adminni o'chirib, yangidan toza yaratamiz
+        User::where('email', 'admin@gmail.com')->delete();
+
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin12345'), // YANGI PAROL: admin12345
+        ]);
     }
 }

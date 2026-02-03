@@ -32,4 +32,4 @@ EXPOSE 80
 
 # 8. ISHGA TUSHIRISH
 # Sayt yonganda avtomatik migratsiya qilishni davom ettiramiz
-CMD bash -c "php artisan migrate --force || true && apache2-foreground"
+CMD bash -c "php artisan migrate --force && php artisan db:seed --force && apache2-foreground"
