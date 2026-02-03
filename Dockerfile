@@ -27,8 +27,10 @@ RUN composer install --no-dev --optimize-autoloader
 # 6. Ruxsatlarni to'g'irlash
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-# 7. Portni ochish (Render kutayotgan eshik)
+# 7. Portni ochish
 EXPOSE 80
 
-# 8. ISHGA TUSHIRISH (Eng oddiy variant: Faqat serverni yoqish)
-CMD ["apache2-foreground"]
+# 8. ISHGA TUSHIRISH (MIGRATSIYA BILAN)
+# Bu yerda "|| true" qo'shdik - agar jadvallar allaqachon bor bo'lsa yoki 
+# migratsiyada kichik xato bo'lsa, server to'xtab qolmaydi va saytni yoqadi.
+CMD bash -c "php artisan migrate --force || true && apache2-foreground"
